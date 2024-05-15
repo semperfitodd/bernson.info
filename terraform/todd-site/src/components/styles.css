@@ -1,12 +1,12 @@
 .achievements-list a {
-    color: #FFD700; /* Gold color, matching the text */
+    color: #008080; /* Gold color, matching the text */
     text-decoration: none; /* Removes underline */
     background: none;
     font-weight: 700; /* Ensures the font weight matches other strong elements */
 }
 
 .achievements-list a:hover, .achievements-list a:active {
-    color: #FFD700; /* Keeps the color consistent on hover */
+    color: #008080; /* Keeps the color consistent on hover */
     text-decoration: none; /* Ensures no underline appears on hover */
     font-size: 120%;
 }
@@ -24,7 +24,7 @@
 
 .achievements-list li strong {
     flex: 1; /* Allows the title to take necessary space, pushing description right */
-    color: #FFD700; /* Gold color for titles */
+    color: #008080; /* Gold color for titles */
     margin-right: 10px; /* Ensures spacing between title and description */
 }
 
@@ -48,7 +48,7 @@
 
 .name-h2 {
     font-size: 20px;
-    color: #FFD700;
+    color: #008080;
     text-align: center;
 }
 
@@ -63,7 +63,7 @@
 
 .nav-links li a.active,
 .nav-links li a:hover {
-    color: #FFD700; /* Gold color for highlights */
+    color: #008080; /* Gold color for highlights */
     font-weight: 700;
 }
 
@@ -127,7 +127,7 @@
 }
 
 .social-icons a:hover {
-    color: #FFD700;
+    color: #008080;
     font-size: 60px;
 }
 
@@ -153,5 +153,5 @@ body {
 
 h2 {
     font-size: 28px;
-    color: #FFD700; /* Gold for headers */
+    color: #008080; /* Gold for headers */
 }
