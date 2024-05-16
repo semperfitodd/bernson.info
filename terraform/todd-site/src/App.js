@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Home from './components/Home';
 import About from './components/About';
 import Articles from './components/Articles';
 import Achievements from './components/Achievements';
 import Footer from './components/Footer';
+import MobileMenu from './components/MobileMenu';
 import './components/styles.css';
 
 function App() {
@@ -15,15 +16,15 @@ function App() {
 
     return (
         <div className="App">
+            <MobileMenu />
             <aside className="sidebar">
-                <Home/>
-                {/* Add nav links here if necessary */}
+                <Home />
             </aside>
             <main className="main-content">
-                <About showDetails={showDetails} onToggle={handleToggle}/>
-                <Articles/>
-                <Achievements/>
-                <Footer/>
+                <About showDetails={showDetails} onToggle={handleToggle} />
+                <Articles />
+                <Achievements />
+                <Footer />
             </main>
         </div>
     );
