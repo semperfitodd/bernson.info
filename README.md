@@ -69,10 +69,10 @@ The Lambda function is responsible for fetching article data from LinkedIn and s
 
 ### Main Terraform Files
 
-	•	backend.tf: Configures the backend for Terraform state.
-	•	main.tf: Main Terraform configuration.
-	•	variables.tf: Defines variables used in the Terraform configuration.
-	•	versions.tf: Specifies the Terraform version.
+ -	backend.tf: Configures the backend for Terraform state.
+ -	main.tf: Main Terraform configuration.
+ -	variables.tf: Defines variables used in the Terraform configuration.
+ -	versions.tf: Specifies the Terraform version.
 
 ### Site Module
 
