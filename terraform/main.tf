@@ -5,6 +5,11 @@ locals {
       environment    = var.environment
       site_directory = "./NAME-site/build"
     }
+    josephine = {
+      domain         = var.domain
+      environment    = var.environment
+      site_directory = "./NAME-site/build"
+    }
   }
 }
 

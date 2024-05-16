@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './styles.css';
 
 const About = () => {
@@ -9,7 +9,7 @@ const About = () => {
     };
 
     return (
-        <section id="about" className={`section about ${showDetails ? 'expanded' : ''}`}>
+        <section id="about" className={`section about ${showDetails ? 'expanded' : ''}`} onClick={handleToggle}>
             {showDetails ? (
                 <div className="content-block">
                     <p><span>Hi, I'm </span><span id="name">Todd.</span></p>
@@ -29,7 +29,7 @@ const About = () => {
                         children's dreams and making the most of our beautiful surroundings.</p>
                 </div>
             ) : (
-                <div className="intro-block" onClick={handleToggle}>
+                <div className="intro-block">
                     <h1 className="handwritten">Welcome, I'm Todd</h1>
                 </div>
             )}

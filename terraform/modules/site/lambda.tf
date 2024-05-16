@@ -4,8 +4,8 @@ locals {
 module "lambda_function_linkedin" {
   source = "terraform-aws-modules/lambda/aws"
 
-  function_name = "${local.environment}-linkedin"
-  description   = "${local.environment} function to get LinkedIn articles"
+  function_name = "${var.name}-${local.environment}-linkedin"
+  description   = "${var.name}-${local.environment} function to get LinkedIn articles"
   handler       = "app.lambda_handler"
   publish       = true
   runtime       = "python3.11"
@@ -43,7 +43,7 @@ module "lambda_function_linkedin" {
 }
 
 resource "aws_cloudwatch_event_rule" "daily_trigger" {
-  name                = "${local.environment}-linkedin-daily-trigger"
+  name                = "${var.name}-${local.environment}-linkedin-daily-trigger"
   description         = "Daily trigger for LinkedIn articles Lambda function"
   schedule_expression = "rate(1 day)"
 }
