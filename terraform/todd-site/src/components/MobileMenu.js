@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import './styles.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes, faEnvelope, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
-import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faBars, faCalendarAlt, faEnvelope, faTimes} from '@fortawesome/free-solid-svg-icons';
+import {faLinkedin} from '@fortawesome/free-brands-svg-icons';
 
 const MobileMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +14,7 @@ const MobileMenu = () => {
     return (
         <>
             <div className="hamburger-icon" onClick={toggleMenu}>
-                <FontAwesomeIcon icon={isOpen ? faTimes : faBars} />
+                <FontAwesomeIcon icon={isOpen ? faTimes : faBars}/>
             </div>
             {isOpen && (
                 <nav className="mobile-nav">
@@ -25,13 +25,13 @@ const MobileMenu = () => {
                     </ul>
                     <div className="social-icons">
                         <a href="https://www.linkedin.com/in/todd-bernson/" target="_blank" rel="noopener noreferrer">
-                            <FontAwesomeIcon icon={faLinkedin} />
+                            <FontAwesomeIcon icon={faLinkedin}/>
                         </a>
                         <a href="mailto:todd@bernsonfamily.com">
-                            <FontAwesomeIcon icon={faEnvelope} />
+                            <FontAwesomeIcon icon={faEnvelope}/>
                         </a>
                         <a href="https://calendly.com/todd-bernson" target="_blank" rel="noopener noreferrer">
-                            <FontAwesomeIcon icon={faCalendarAlt} />
+                            <FontAwesomeIcon icon={faCalendarAlt}/>
                         </a>
                     </div>
                 </nav>

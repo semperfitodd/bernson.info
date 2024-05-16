@@ -7,7 +7,8 @@ const Achievements = () => {
             <ul className="achievements-list">
                 <li>
                     <strong>
-                        <a href="https://aws.amazon.com/blogs/apn/congrats-to-our-2023-aws-ambassador-award-winners-and-meet-the-newest-aws-ambassadors/" target="_blank" rel="noopener noreferrer">
+                        <a href="https://aws.amazon.com/blogs/apn/congrats-to-our-2023-aws-ambassador-award-winners-and-meet-the-newest-aws-ambassadors/"
+                           target="_blank" rel="noopener noreferrer">
                             Top Global Ambassador Award Winner 2023
                         </a>
                     </strong>
@@ -15,7 +16,8 @@ const Achievements = () => {
                 </li>
                 <li>
                     <strong>
-                        <a href="https://aws.amazon.com/blogs/apn/congrats-to-our-2022-aws-ambassador-award-winners-and-meet-the-newest-ambassadors/" target="_blank" rel="noopener noreferrer">
+                        <a href="https://aws.amazon.com/blogs/apn/congrats-to-our-2022-aws-ambassador-award-winners-and-meet-the-newest-ambassadors/"
+                           target="_blank" rel="noopener noreferrer">
                             #1 North America Ambassador of the Year 2022
                         </a>
                     </strong>

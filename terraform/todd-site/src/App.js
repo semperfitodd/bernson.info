@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Home from './components/Home';
 import About from './components/About';
 import Articles from './components/Articles';
@@ -16,15 +16,15 @@ function App() {
 
     return (
         <div className="App">
-            <MobileMenu />
+            <MobileMenu/>
             <aside className="sidebar">
-                <Home />
+                <Home/>
             </aside>
             <main className="main-content">
-                <About showDetails={showDetails} onToggle={handleToggle} />
-                <Articles />
-                <Achievements />
-                <Footer />
+                <About showDetails={showDetails} onToggle={handleToggle}/>
+                <Articles/>
+                <Achievements/>
+                <Footer/>
             </main>
         </div>
     );

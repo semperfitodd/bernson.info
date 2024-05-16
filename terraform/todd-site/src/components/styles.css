@@ -80,8 +80,8 @@ body {
 }
 
 .handwritten {
-    font-family: 'Merriweather', serif; /* Changed font to serif for an executive look */
-    font-size: 36px; /* Adjusted size for better readability */
+    font-family: 'Merriweather', serif;
+    font-size: 36px; 
     color: #333333;
     text-align: center;
     cursor: pointer;
@@ -307,14 +307,14 @@ h2 {
 }
 
 .mobile-nav .social-icons a {
-    color: white; /* Change the color to white */
-    font-size: 28px; /* Make the icons a bit larger */
+    color: white;
+    font-size: 28px;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .mobile-nav .social-icons a:hover {
-    color: #0077b5; /* Change this to the desired hover color */
+    color: #0077b5;
 }
 
 @media (max-width: 768px) {
@@ -343,17 +343,17 @@ h2 {
     .articles-grid {
         display: flex;
         flex-direction: column;
-        gap: 5px; /* Adjust the gap as needed */
+        gap: 5px;
     }
 
     .article-card {
-        width: 70%; /* Reduce width to fit better on mobile */
+        width: 70%;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 10px; /* Adjust padding to scale down */
-        box-sizing: border-box; /* Ensure padding is included in the width */
+        padding: 10px;
+        box-sizing: border-box;
     }
 
     .article-thumbnail {
@@ -362,28 +362,28 @@ h2 {
     }
 
     .article-info {
-        padding: 5px; /* Adjust padding to scale down */
+        padding: 5px;
         text-align: center;
     }
 
     .section {
-        width: 100%; /* Ensure the section takes up full width */
-        padding: 0; /* Remove padding to prevent content from touching the edges */
+        width: 100%;
+        padding: 0;
         box-sizing: border-box;
     }
 
     .achievements {
-        width: 100%; /* Ensure the achievements section takes up full width */
-        padding: 0; /* Remove padding to prevent content from touching the edges */
+        width: 100%;
+        padding: 0;
     }
 
     .achievements-list {
         display: flex;
         flex-direction: column;
-        gap: 15px; /* Adjust the gap as needed */
+        gap: 15px;
         width: 100%;
-        margin: 0; /* Remove margins to align to the edges */
-        padding: 0; /* Remove padding to align to the edges */
+        margin: 0;
+        padding: 0;
         box-sizing: border-box;
     }
 
@@ -396,11 +396,11 @@ h2 {
         border: 1px solid #ddd;
         border-radius: 10px;
         background-color: #f9f9f9;
-        width: 100%; /* Ensure full width on mobile */
-        margin: 0 auto; /* Center the items */
+        width: 100%;
+        margin: 0 auto;
         text-align: center;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        box-sizing: border-box; /* Ensure padding is included in the width */
+        box-sizing: border-box;
     }
 
     .achievements-list li strong {
@@ -409,7 +409,7 @@ h2 {
         font-size: 18px;
         color: #004488;
         width: 100%;
-        justify-content: center; /* Center the text */
+        justify-content: center;
     }
 
     .achievements-list li span {
@@ -417,6 +417,6 @@ h2 {
         font-size: 16px;
         color: #333333;
         width: 100%;
-        justify-content: center; /* Center the text */
+        justify-content: center;
     }
 }
