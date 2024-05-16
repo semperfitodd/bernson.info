@@ -5,7 +5,7 @@
 This repository contains the code and infrastructure for Todd Bernson's personal website. The website is a single-page React application hosted on Amazon S3 and distributed via Amazon CloudFront. It features a daily-updated list of Todd's published articles, fetched using a Lambda function that parses LinkedIn articles and saves the metadata to an S3 bucket.
 
 ## Project Structure
-```bash
+```plaintext
 ├── README.md
 └── terraform
 ├── backend.tf

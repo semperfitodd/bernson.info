@@ -10,14 +10,14 @@ const Achievements = () => {
                         <a href="https://aws.amazon.com/blogs/apn/congrats-to-our-2023-aws-ambassador-award-winners-and-meet-the-newest-aws-ambassadors/"
                            target="_blank" rel="noopener noreferrer">
                             Top Global Ambassador Award Winner 2023</a></strong>
-                    <span>Recognized for exceptional leadership and influence on a global scale.</span>
+                    <span>Recognized for exceptional leadership and influence in the cloud community on a global scale.</span>
                 </li>
                 <li>
                     <strong><a
                         href="https://aws.amazon.com/blogs/apn/congrats-to-our-2022-aws-ambassador-award-winners-and-meet-the-newest-ambassadors/"
                         target="_blank" rel="noopener noreferrer">#1
                         North America Ambassador of the Year 2022</a></strong>
-                    <span>Awarded for outstanding contributions and leadership across North America.</span>
+                    <span>Awarded for outstanding contributions and leadership in the cloud community.</span>
                 </li>
                 <li>
                     <strong>MBA and BS</strong>
@@ -29,11 +29,11 @@ const Achievements = () => {
                 </li>
                 <li>
                     <strong>Red Cross Hero Award</strong>
-                    <span>Honored for significant contributions to community safety and welfare.</span>
+                    <span>Honored for a significant life-saving contribution.</span>
                 </li>
                 <li>
                     <strong>Successful Small Business Owner</strong>
-                    <span>Established and led a profitable enterprise, which was subsequently sold for a significant profit.</span>
+                    <span>Established and led a profitable enterprise, which was subsequently sold.</span>
                 </li>
             </ul>
         </section>
