@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import './styles.css';
 
 const Articles = () => {
@@ -15,8 +15,9 @@ const Articles = () => {
         <section id="articles" className="section articles">
             <div className="articles-grid">
                 {articles.map((article, index) => (
-                    <a href={article.url} target="_blank" rel="noopener noreferrer" key={index} className="article-card">
-                        <img src={article.thumbnail} alt={article.title} className="article-thumbnail" />
+                    <a href={article.url} target="_blank" rel="noopener noreferrer" key={index}
+                       className="article-card">
+                        <img src={article.thumbnail} alt={article.title} className="article-thumbnail"/>
                         <div className="article-info">
                             <h3>{article.title}</h3>
                             <p>{article.read_time}</p>

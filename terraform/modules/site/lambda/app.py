@@ -1,5 +1,6 @@
 import json
 import os
+
 import boto3
 import requests
 from bs4 import BeautifulSoup
@@ -9,11 +10,13 @@ s3 = boto3.client('s3')
 # Define your S3 bucket name here
 BUCKET_NAME = os.environ.get('S3_BUCKET')
 
+
 # Read article URLs from a text file
 def load_article_urls(file_path):
     with open(file_path, 'r') as file:
         urls = file.read().splitlines()
     return urls
+
 
 def fetch_article_data(url):
     try:
@@ -29,11 +32,13 @@ def fetch_article_data(url):
         print(f"Error fetching article data from {url}: {e}")
         return None
 
+
 def save_articles_to_s3(articles_data):
     file_name = 'articles.json'
     file_content = json.dumps(articles_data, indent=4)
     s3.put_object(Bucket=BUCKET_NAME, Key=file_name, Body=file_content)
     print(f"Article data saved to s3://{BUCKET_NAME}/{file_name}")
+
 
 def lambda_handler(event, context):
     article_urls = load_article_urls('article_urls.txt')
@@ -50,6 +55,7 @@ def lambda_handler(event, context):
         'statusCode': 200,
         'body': json.dumps('Article data successfully saved to S3')
     }
+
 
 if __name__ == "__main__":
     article_urls = load_article_urls('article_urls.txt')
