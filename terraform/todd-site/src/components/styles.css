@@ -299,6 +299,24 @@ h2 {
     font-size: 24px;
 }
 
+.mobile-nav .social-icons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    padding: 10px 0;
+}
+
+.mobile-nav .social-icons a {
+    color: white; /* Change the color to white */
+    font-size: 28px; /* Make the icons a bit larger */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.mobile-nav .social-icons a:hover {
+    color: #0077b5; /* Change this to the desired hover color */
+}
+
 @media (max-width: 768px) {
     .hamburger-icon {
         display: block;
