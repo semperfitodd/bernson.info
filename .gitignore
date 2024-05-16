@@ -5,6 +5,7 @@
 **/build/*
 **/builds/*
 **/node_modules/*
+article_urls.txt
 
 # .tfstate static_site
 *.tfstate

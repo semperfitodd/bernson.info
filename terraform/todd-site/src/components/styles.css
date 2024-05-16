@@ -1,43 +1,116 @@
-.achievements-list a {
-    color: #008080; /* Gold color, matching the text */
-    text-decoration: none; /* Removes underline */
-    background: none;
-    font-weight: 700; /* Ensures the font weight matches other strong elements */
-}
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;700&display=swap');
 
-.achievements-list a:hover, .achievements-list a:active {
-    color: #008080; /* Keeps the color consistent on hover */
-    text-decoration: none; /* Ensures no underline appears on hover */
-    font-size: 120%;
-}
-
-.achievements-list li {
-    background-color: #262837;
-    border-radius: 10px;
-    margin: 10px 0;
-    padding: 15px 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #333333;
     display: flex;
-    align-items: center;
-    justify-content: space-between; /* Adjusts the space distribution */
-}
-
-.achievements-list li strong {
-    flex: 1; /* Allows the title to take necessary space, pushing description right */
-    color: #008080; /* Gold color for titles */
-    margin-right: 10px; /* Ensures spacing between title and description */
-}
-
-.achievements-list li span {
-    flex: 2; /* Gives more room for description */
-    text-align: left; /* Ensures descriptions are aligned to the left */
-    color: #E1E1E1; /* Light grey text for descriptions */
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .App {
     display: flex;
     width: 100%;
     height: 100%;
+    background-color: #ffffff;
+}
+
+.article-card {
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 200px;
+    text-decoration: none;
+    color: #333333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.article-info h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #004488;
+    font-family: 'Merriweather', serif; /* Using a serif font for titles */
+}
+
+.article-info p {
+    font-size: 12px;
+    color: #666666;
+}
+
+.article-info {
+    padding: 10px;
+}
+
+.article-thumbnail {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+}
+
+.articles h2 {
+    color: #004488;
+    margin-bottom: 20px;
+    font-family: 'Merriweather', serif; /* Using a serif font for headings */
+}
+
+.articles p {
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+.articles {
+    padding: 20px;
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-content: center;
+}
+
+.handwritten {
+    font-family: 'Merriweather', serif; /* Changed font to serif for an executive look */
+    font-size: 36px; /* Adjusted size for better readability */
+    color: #333333;
+    text-align: center;
+    cursor: pointer;
+    margin: 0;
+}
+
+.intro-block, .content-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.intro-block {
+    height: 100px;
+    transition: height 0.3s ease-in-out;
+}
+
+.section.about.expanded .intro-block {
+    height: 100%;
+}
+
+.intro-block:hover .handwritten {
+    color: #004488;
 }
 
 .main-content {
@@ -47,13 +120,13 @@
 }
 
 .name-h2 {
-    font-size: 20px;
-    color: #008080;
+    font-size: 24px;
+    color: #004488;
     text-align: center;
 }
 
 .nav-links li a {
-    color: #E1E1E1;
+    color: #333333;
     font-size: 18px;
     font-weight: 400;
     margin-left: 10px;
@@ -63,7 +136,7 @@
 
 .nav-links li a.active,
 .nav-links li a:hover {
-    color: #008080; /* Gold color for highlights */
+    color: #004488;
     font-weight: 700;
 }
 
@@ -74,7 +147,7 @@
 }
 
 .profile-pic {
-    filter: brightness(70%);
+    filter: brightness(100%);
     width: 100%;
     height: auto;
     border-radius: 50%;
@@ -92,43 +165,50 @@
     margin: auto;
 }
 
-.section.about {
-    background-color: #262837; /* Darker shade used in Achievements for consistency */
-    border-radius: 10px; /* Rounded corners */
-    padding: 20px; /* Sufficient padding around the text */
-    margin: 20px auto; /* Centers the section and adds space around it */
-    max-width: 800px; /* Optimal reading width */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
-    color: #E1E1E1; /* Light grey text for better readability */
-    font-size: 18px; /* Slightly larger text for readability */
-    line-height: 1.6; /* Improved line spacing for readability */
+.section.about p {
+    margin-bottom: 15px;
 }
 
-.section.about p {
-    margin-bottom: 15px; /* Adds space between paragraphs */
+.section.about {
+    padding: 0;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #333333;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.section.about .content-block {
+    display: block;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .sidebar {
     position: relative;
     width: 250px;
     height: 100vh;
-    background-color: #262837; /* Even darker shade for sidebar */
+    background-color: #f7f7f7;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 .social-icons a {
     margin: 0 10px;
-    color: #fff;
+    color: #004488;
     font-size: 40px;
 }
 
 .social-icons a:hover {
-    color: #008080;
-    font-size: 60px;
+    color: #C0B283;
 }
 
 .social-icons {
@@ -139,19 +219,43 @@
     text-align: center;
 }
 
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #333645; /* Dark grey background */
-    color: #E1E1E1; /* Light grey text */
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
-}
-
 h2 {
     font-size: 28px;
-    color: #008080; /* Gold for headers */
+    color: #004488;
+}
+
+.achievements-list a {
+    color: #004488;
+    text-decoration: none;
+    background: none;
+    font-weight: 700;
+}
+
+.achievements-list a:hover, .achievements-list a:active {
+    color: #004488;
+    text-decoration: none;
+    font-size: 120%;
+}
+
+.achievements-list li span {
+    flex: 2;
+    text-align: left;
+    color: #333333;
+}
+
+.achievements-list li strong {
+    flex: 1;
+    color: #004488;
+    margin-right: 10px;
+}
+
+.achievements-list li {
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 15px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

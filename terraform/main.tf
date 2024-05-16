@@ -1,8 +1,8 @@
 locals {
   site = {
     todd = {
-      domain      = var.domain
-      environment = var.environment
+      domain         = var.domain
+      environment    = var.environment
       site_directory = "./NAME-site/build"
     }
   }

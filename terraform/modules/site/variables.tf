@@ -1,5 +1,5 @@
 locals {
-  environment = replace(var.environment, "_", "-")
+  environment = replace(var.environment, ".", "-")
 
   mime_types = {
     "css"  = "text/css"
