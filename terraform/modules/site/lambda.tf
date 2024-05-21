@@ -27,13 +27,18 @@ module "lambda_function_linkedin" {
 
   attach_policy_statements = true
   policy_statements = {
-    s3 = {
-      effect  = "Allow",
-      actions = ["s3:*"],
-      resources = [
-        module.site_s3_bucket.s3_bucket_arn,
-        "${module.site_s3_bucket.s3_bucket_arn}/*",
+    s3_bucket = {
+      effect    = "Allow",
+      actions   = ["s3:ListBucket"]
+      resources = [module.site_s3_bucket.s3_bucket_arn]
+    }
+    s3_object = {
+      effect = "Allow",
+      actions = [
+        "s3:PutObject",
+        "s3:GetObject",
       ]
+      resources = ["${module.site_s3_bucket.s3_bucket_arn}/*"]
     }
   }
 
