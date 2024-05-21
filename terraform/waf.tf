@@ -38,7 +38,7 @@ resource "aws_wafv2_web_acl" "this" {
   }
   rule {
     name     = "AWS-AWSManagedRulesBotControlRuleSet"
-    priority = 5
+    priority = 2
 
     override_action {
 
@@ -61,7 +61,7 @@ resource "aws_wafv2_web_acl" "this" {
   }
   rule {
     name     = "AWS-AWSManagedRulesCommonRuleSet"
-    priority = 6
+    priority = 3
 
     override_action {
 
