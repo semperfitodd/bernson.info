@@ -21,6 +21,7 @@ module "site" {
   environment    = each.value.environment
   name           = each.key
   site_directory = replace(each.value.site_directory, "NAME", each.key)
+  web_acl_id     = aws_wafv2_web_acl.this.arn
 
   tags = var.tags
 }

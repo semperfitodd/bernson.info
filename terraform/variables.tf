@@ -10,6 +10,12 @@ variable "environment" {
   default     = null
 }
 
+variable "last_name" {
+  description = "Last name"
+  type        = string
+  default     = null
+}
+
 variable "region" {
   description = "AWS Region where resources will be deployed"
   type        = string

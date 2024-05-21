@@ -45,3 +45,8 @@ variable "tags" {
   description = "Tags to be applied to resources"
   type        = map(string)
 }
+
+variable "web_acl_id" {
+  description = "WAF ARN"
+  type        = string
+}

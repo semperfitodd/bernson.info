@@ -64,6 +64,8 @@ module "cdn" {
     ssl_support_method  = "sni-only"
   }
 
+  web_acl_id = var.web_acl_id
+
   tags = local.tags
 }
 
