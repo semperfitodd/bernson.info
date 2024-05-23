@@ -4,6 +4,12 @@ variable "domain" {
   default     = null
 }
 
+variable "email_address" {
+  description = "Personal Email Address"
+  type        = string
+  default     = null
+}
+
 variable "environment" {
   description = "Environment all resources will be built"
   type        = string

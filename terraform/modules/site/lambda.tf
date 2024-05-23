@@ -4,12 +4,13 @@ locals {
 module "lambda_function_linkedin" {
   source = "terraform-aws-modules/lambda/aws"
 
-  function_name = "${var.name}-${local.environment}-linkedin"
   description   = "${var.name}-${local.environment} function to get LinkedIn articles"
+  function_name = "${var.name}-${local.environment}-linkedin"
   handler       = "app.lambda_handler"
+  memory_size   = 128
   publish       = true
   runtime       = "python3.11"
-  timeout       = 30
+  timeout       = 20
 
   environment_variables = {
     S3_BUCKET = module.site_s3_bucket.s3_bucket_id
