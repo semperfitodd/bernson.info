@@ -21,6 +21,11 @@ locals {
   })
 }
 
+variable "bsc_insights_url" {
+  description = "Base URL for BSC Blog"
+  type        = string
+}
+
 variable "domain" {
   description = "Domain"
   type        = string
@@ -28,6 +33,11 @@ variable "domain" {
 
 variable "environment" {
   description = "Environment all resources will be built"
+  type        = string
+}
+
+variable "my_name" {
+  description = "My full name"
   type        = string
 }
 
@@ -46,7 +56,7 @@ variable "tags" {
   type        = map(string)
 }
 
-variable "web_acl_id" {
-  description = "WAF ARN"
-  type        = string
-}
+# variable "web_acl_id" {
+#   description = "WAF ARN"
+#   type        = string
+# }

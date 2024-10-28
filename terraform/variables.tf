@@ -1,3 +1,10 @@
+variable "bsc_insights_url" {
+  description = "BSC Insights url"
+  type        = string
+
+  default = null
+}
+
 variable "domain" {
   description = "Domain"
   type        = string

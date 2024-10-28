@@ -1,6 +1,7 @@
 locals {
   lambda_directory = "lambda"
 }
+
 module "lambda_function_linkedin" {
   source = "terraform-aws-modules/lambda/aws"
 
@@ -13,6 +14,8 @@ module "lambda_function_linkedin" {
   timeout       = 20
 
   environment_variables = {
+    AUTHOR    = var.my_name
+    BASEURL   = var.bsc_insights_url
     S3_BUCKET = module.site_s3_bucket.s3_bucket_id
   }
 

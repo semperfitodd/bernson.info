@@ -43,7 +43,7 @@ const Home = () => {
             </h1>
             <div className="profile-pic-container">
                 <img src={ProfilePic} alt="Todd Bernson" className="profile-pic"/>
-                <h2 className="name-h2">Builder. <br/> Innovator. <br/> Tech Leader.</h2>
+                <h2 className="name-h2">Lifelong Learner <br/> Innovator <br/> Tech Leader</h2>
             </div>
             <nav className="side-nav">
                 <ul className="nav-links">

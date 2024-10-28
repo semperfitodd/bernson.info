@@ -18,7 +18,7 @@ const Achievements = () => {
                     <strong>
                         <a href="https://aws.amazon.com/blogs/apn/congrats-to-our-2022-aws-ambassador-award-winners-and-meet-the-newest-ambassadors/"
                            target="_blank" rel="noopener noreferrer">
-                            #1 North America Ambassador of the Year 2022
+                            #1 North America Ambassador of the Year 2022/2024
                         </a>
                     </strong>
                     <span>Awarded for outstanding contributions and leadership in the cloud community.</span>
