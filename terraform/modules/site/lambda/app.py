@@ -1,20 +1,201 @@
-from bs4 import BeautifulSoup
-import boto3
 import json
 import logging
 import math
 import os
 import re
-import requests
 import time
+from datetime import datetime, timedelta
+
+import boto3
+import requests
+from botocore.exceptions import ClientError
+from bs4 import BeautifulSoup
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 s3_client = boto3.client('s3')
+dynamodb = boto3.resource('dynamodb')
+secrets_client = boto3.client('secretsmanager')
 S3_BUCKET = os.getenv('S3_BUCKET')
 AUTHOR = os.getenv('AUTHOR')
 BASEURL = os.getenv('BASEURL')
+DYNAMO_TABLE = os.getenv('DYNAMO_TABLE')
+LINKEDIN_SECRET = os.getenv('LINKEDIN_SECRET')
+
+
+class LinkedInPoster:
+    def __init__(self, access_token, person_id):
+        self.access_token = access_token
+        self.person_id = person_id
+        self.headers = {
+            "Authorization": f"Bearer {access_token}",
+            "Content-Type": "application/json",
+            "X-Restli-Protocol-Version": "2.0.0"
+        }
+
+    def upload_image(self, image_url):
+        register_url = "https://api.linkedin.com/v2/assets?action=registerUpload"
+        register_payload = {
+            "registerUploadRequest": {
+                "recipes": ["urn:li:digitalmediaRecipe:feedshare-image"],
+                "owner": f"urn:li:person:{self.person_id}",
+                "serviceRelationships": [{
+                    "relationshipType": "OWNER",
+                    "identifier": "urn:li:userGeneratedContent"
+                }]
+            }
+        }
+
+        response = requests.post(register_url, headers=self.headers, json=register_payload)
+        if response.status_code != 200:
+            raise Exception(f"Failed to register upload: {response.text}")
+
+        upload_data = response.json()
+
+        image_response = requests.get(image_url)
+        if image_response.status_code != 200:
+            raise Exception("Failed to download image")
+
+        image_data = image_response.content
+
+        upload_url = \
+            upload_data['value']['uploadMechanism']['com.linkedin.digitalmedia.uploading.MediaUploadHttpRequest'][
+                'uploadUrl']
+        asset_id = upload_data['value']['asset']
+
+        upload_response = requests.put(
+            upload_url,
+            data=image_data,
+            headers={
+                'Authorization': f'Bearer {self.access_token}'
+            }
+        )
+
+        if upload_response.status_code != 201:
+            raise Exception(f"Failed to upload image: {upload_response.text}")
+
+        time.sleep(3)
+        return asset_id
+
+    def create_post(self, article, asset_id):
+        url = "https://api.linkedin.com/v2/ugcPosts"
+
+        payload = {
+            "author": f"urn:li:person:{self.person_id}",
+            "lifecycleState": "PUBLISHED",
+            "specificContent": {
+                "com.linkedin.ugc.ShareContent": {
+                    "shareCommentary": {
+                        "text": f"New article: {article['title']}\n\nRead time: {article['read_time']}\n\nClick here to read: {article['url']}"
+                    },
+                    "shareMediaCategory": "IMAGE",
+                    "media": [
+                        {
+                            "status": "READY",
+                            "description": {
+                                "text": article['title']
+                            },
+                            "media": asset_id,
+                            "title": {
+                                "text": article['title']
+                            }
+                        }
+                    ]
+                }
+            },
+            "visibility": {
+                "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
+            }
+        }
+
+        response = requests.post(url, headers=self.headers, json=payload)
+        if response.status_code != 201:
+            raise Exception(f"Failed to create post: {response.text}")
+
+        return response.json()
+
+
+def get_linkedin_credentials():
+    try:
+        logger.info(f"Getting LinkedIn credentials from secret: {LINKEDIN_SECRET}")
+        response = secrets_client.get_secret_value(SecretId=LINKEDIN_SECRET)
+        secret = json.loads(response['SecretString'])
+        logger.info("Successfully retrieved LinkedIn credentials")
+        return secret['LINKEDIN_TOKEN'], secret['LINKEDIN_MEMBERID']
+    except ClientError as e:
+        logger.error(f"Error getting LinkedIn credentials: {str(e)}")
+        raise e
+
+
+def post_to_linkedin(article):
+    max_retries = 3
+    retry_delay = 2
+
+    for attempt in range(max_retries):
+        try:
+            logger.info(f"Attempt {attempt + 1}/{max_retries} to post article to LinkedIn: {article['title']}")
+
+            access_token, member_id = get_linkedin_credentials()
+            logger.info(f"Successfully retrieved credentials for member ID: {member_id}")
+
+            poster = LinkedInPoster(access_token, member_id)
+
+            logger.info(f"Uploading image from URL: {article['thumbnail']}")
+            asset_id = poster.upload_image(article['thumbnail'])
+            logger.info(f"Successfully uploaded image. Asset ID: {asset_id}")
+
+            logger.info("Creating LinkedIn post...")
+            result = poster.create_post(article, asset_id)
+            logger.info(f"Successfully created LinkedIn post. Response: {json.dumps(result, indent=2)}")
+
+            return True
+
+        except Exception as e:
+            logger.error(f"Attempt {attempt + 1}/{max_retries} failed: {str(e)}")
+            if attempt < max_retries - 1:
+                logger.info(f"Waiting {retry_delay} seconds before retry...")
+                time.sleep(retry_delay)
+                retry_delay *= 2
+            else:
+                logger.error(f"All attempts failed to post article to LinkedIn: {article['title']}")
+                return False
+
+
+def get_ttl_timestamp():
+    return int((datetime.now() + timedelta(days=60)).timestamp())
+
+
+def check_article_exists(url):
+    try:
+        table = dynamodb.Table(DYNAMO_TABLE)
+        response = table.get_item(
+            Key={'url': url}
+        )
+        return 'Item' in response
+    except Exception as e:
+        logger.error(f"Error checking DynamoDB: {str(e)}")
+        return False
+
+
+def save_to_dynamodb(article_info):
+    try:
+        table = dynamodb.Table(DYNAMO_TABLE)
+
+        item = {
+            'url': article_info['url'],
+            'title': article_info['title'],
+            'thumbnail': article_info.get('thumbnail'),
+            'read_time': article_info['read_time'],
+            'expiry_time': get_ttl_timestamp()
+        }
+
+        table.put_item(Item=item)
+        logger.info(f"Successfully saved article to DynamoDB with URL: {article_info['url']}")
+        return True
+    except Exception as e:
+        logger.error(f"Error saving to DynamoDB: {str(e)}")
+        return False
 
 
 def calculate_read_time(text):
@@ -121,6 +302,44 @@ def get_author_articles():
         return []
 
 
+def process_new_articles(articles):
+    new_articles = []
+    linkedin_results = []
+
+    for article in articles:
+        if not check_article_exists(article['url']):
+            logger.info(f"\nProcessing new article: {article['title']}")
+
+            if save_to_dynamodb(article):
+                new_articles.append(article)
+
+                linkedin_success = post_to_linkedin(article)
+                linkedin_results.append({
+                    'title': article['title'],
+                    'linkedin_posted': linkedin_success
+                })
+
+                if linkedin_success:
+                    logger.info(f"Successfully posted article to LinkedIn: {article['title']}")
+                else:
+                    logger.error(f"Failed to post article to LinkedIn: {article['title']}")
+            else:
+                logger.error(f"Failed to save article to DynamoDB: {article['title']}")
+
+    if new_articles:
+        logger.info("\nNEW ARTICLES FOUND:\n" + "=" * 50)
+        logger.info(json.dumps(new_articles, indent=2))
+        logger.info("\nLINKEDIN POSTING RESULTS:\n" + "=" * 50)
+        logger.info(json.dumps(linkedin_results, indent=2))
+    else:
+        logger.info("\nNo new articles found")
+
+    return {
+        'articles': new_articles,
+        'linkedin_results': linkedin_results
+    }
+
+
 def lambda_handler(event, context):
     logger.info("Starting Lambda function execution")
     articles = get_author_articles()
@@ -139,7 +358,17 @@ def lambda_handler(event, context):
             ContentType="application/json"
         )
         logger.info(f"Successfully saved articles.json to {S3_BUCKET}")
-        return {"statusCode": 200, "body": json.dumps("Successfully saved articles.json to S3")}
+
+        results = process_new_articles(articles)
+
+        return {
+            "statusCode": 200,
+            "body": json.dumps({
+                "message": "Successfully saved articles.json to S3",
+                "new_articles": results['articles'] if results['articles'] else "No new articles found",
+                "linkedin_results": results['linkedin_results']
+            })
+        }
     except Exception as e:
         logger.error(f"Failed to upload articles.json to S3: {str(e)}")
         logger.exception("Full traceback:")

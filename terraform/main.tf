@@ -7,13 +7,13 @@ locals {
       my_name          = "Todd Bernson"
       site_directory   = "./NAME-site/build"
     }
-    josephine = {
-      bsc_insights_url = var.bsc_insights_url
-      domain           = var.domain
-      environment      = var.environment
-      my_name          = "Josephine Bernson"
-      site_directory   = "./NAME-site/build"
-    }
+    # josephine = {
+    #   bsc_insights_url = var.bsc_insights_url
+    #   domain           = var.domain
+    #   environment      = var.environment
+    #   my_name          = "Josephine Bernson"
+    #   site_directory   = "./NAME-site/build"
+    # }
   }
 }
 

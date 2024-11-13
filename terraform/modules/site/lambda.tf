@@ -11,12 +11,14 @@ module "lambda_function_linkedin" {
   memory_size   = 128
   publish       = true
   runtime       = "python3.11"
-  timeout       = 20
+  timeout       = 60
 
   environment_variables = {
-    AUTHOR    = var.my_name
-    BASEURL   = var.bsc_insights_url
-    S3_BUCKET = module.site_s3_bucket.s3_bucket_id
+    AUTHOR          = var.my_name
+    BASEURL         = var.bsc_insights_url
+    DYNAMO_TABLE    = aws_dynamodb_table.article_table.name
+    LINKEDIN_SECRET = aws_secretsmanager_secret.linkedin_token.name
+    S3_BUCKET       = module.site_s3_bucket.s3_bucket_id
   }
 
   source_path = [
@@ -31,6 +33,11 @@ module "lambda_function_linkedin" {
 
   attach_policy_statements = true
   policy_statements = {
+    dynamodb = {
+      effect    = "Allow",
+      actions   = ["dynamodb:*"]
+      resources = [aws_dynamodb_table.article_table.arn]
+    }
     s3_bucket = {
       effect    = "Allow",
       actions   = ["s3:ListBucket"]
@@ -43,6 +50,14 @@ module "lambda_function_linkedin" {
         "s3:GetObject",
       ]
       resources = ["${module.site_s3_bucket.s3_bucket_arn}/*"]
+    }
+    secrets = {
+      effect  = "Allow",
+      actions = ["secretsmanager:*"]
+      resources = [
+        aws_secretsmanager_secret.linkedin_token.arn,
+        aws_secretsmanager_secret_version.linkedin_token_value.arn
+      ]
     }
   }
 
