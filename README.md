@@ -63,7 +63,9 @@ The website is hosted on Amazon S3 and served via Amazon CloudFront for improved
     ```
 ## Lambda Function
 
-The Lambda function is responsible for fetching article data from LinkedIn and saving it to an S3 bucket as articles.json.
+The Lambda function is responsible for fetching article data from the blog and saving it to an S3 bucket as articles.json. It has been updated to also post articles to LinkedIn.
+
+AWS secret holds the LinkedIn token which is generated [here](https://www.linkedin.com/developers/tools/oauth/token-generator).
 
 ## Terraform Configuration
 
