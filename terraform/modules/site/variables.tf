@@ -12,6 +12,7 @@ locals {
     "png"  = "image/png"
     "svg"  = "image/svg+xml"
     "txt"  = "text/plain"
+    "xml"  = "application/xml"
   }
 
   site_domain = "${var.name}.${var.domain}"
