@@ -3,7 +3,8 @@ locals {
 }
 
 module "lambda_function_linkedin" {
-  source = "terraform-aws-modules/lambda/aws"
+  source  = "terraform-aws-modules/lambda/aws"
+  version = "8.1.2"
 
   description   = "${var.name}-${local.environment} function to get LinkedIn articles"
   function_name = "${var.name}-${local.environment}-linkedin"

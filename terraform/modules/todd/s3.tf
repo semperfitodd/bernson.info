@@ -2,16 +2,22 @@ data "aws_iam_policy_document" "site" {
   statement {
     effect = "Allow"
     principals {
-      identifiers = module.cdn.cloudfront_origin_access_identity_iam_arns
-      type        = "AWS"
+      identifiers = ["cloudfront.amazonaws.com"]
+      type        = "Service"
     }
     actions   = ["s3:GetObject"]
     resources = ["${module.site_s3_bucket.s3_bucket_arn}/*"]
+    condition {
+      test     = "StringEquals"
+      variable = "AWS:SourceArn"
+      values   = [module.cdn.cloudfront_distribution_arn]
+    }
   }
 }
 
 module "site_s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
+  source  = "terraform-aws-modules/s3-bucket/aws"
+  version = "5.9.1"
 
   bucket = local.site_domain
 

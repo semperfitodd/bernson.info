@@ -1,0 +1,10 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Disallow: /static/
+
+# Sitemap
+Sitemap: https://todd.bernson.info/sitemap.xml
+
+# Crawl-delay for polite crawlers
+Crawl-delay: 1
