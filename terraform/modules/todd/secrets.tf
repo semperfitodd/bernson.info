@@ -1,5 +1,5 @@
 resource "aws_secretsmanager_secret" "linkedin_token" {
-  name = "${var.name}-${local.environment}-linkedin"
+  name = "${var.name}${local.environment}-${var.name}-linkedin"
 
   tags = local.tags
 }

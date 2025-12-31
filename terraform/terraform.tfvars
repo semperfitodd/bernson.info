@@ -2,10 +2,12 @@ bsc_insights_url = "https://bscanalytics.com"
 
 domain = "bernson.info"
 
-email_address = "todd@bernsonfamily.com"
-
 environment = "bernson.info"
 
-last_name = "bernson"
-
 region = "us-east-1"
+
+todd_full_name = "Todd Bernson"
+
+todd_name = "todd"
+
+todd_site_directory = "../todd-site/build"

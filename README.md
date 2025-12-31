@@ -58,7 +58,7 @@ The website is hosted on Amazon S3 and served via Amazon CloudFront for improved
 2.	Install dependencies
 
     ```bash
-    cd terraform/todd-site
+    cd terraform/todd-todd
     npm install
     ```
 ## Lambda Function

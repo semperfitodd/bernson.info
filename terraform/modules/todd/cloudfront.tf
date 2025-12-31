@@ -1,5 +1,6 @@
 module "cdn" {
-  source = "terraform-aws-modules/cloudfront/aws"
+  source  = "terraform-aws-modules/cloudfront/aws"
+  version = "6.0.2"
 
   aliases = [local.site_domain]
 
@@ -12,9 +13,13 @@ module "cdn" {
 
   default_root_object = "index.html"
 
-  create_origin_access_identity = true
-  origin_access_identities = {
-    site_bucket = "Site Bucket Access ID"
+  origin_access_control = {
+    s3_bucket = {
+      description      = "Site Bucket Access Control"
+      origin_type      = "s3"
+      signing_behavior = "always"
+      signing_protocol = "sigv4"
+    }
   }
 
   origin = {
@@ -29,10 +34,8 @@ module "cdn" {
     }
 
     s3_one = {
-      domain_name = module.site_s3_bucket.s3_bucket_bucket_domain_name
-      s3_origin_config = {
-        origin_access_identity = "site_bucket"
-      }
+      domain_name               = module.site_s3_bucket.s3_bucket_bucket_domain_name
+      origin_access_control_key = "s3_bucket"
     }
   }
 
