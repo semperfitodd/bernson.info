@@ -1,0 +1,41 @@
+.hero {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero h3 {
+  color: var(--color-gray);
+}
+
+.subheadline {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  max-width: var(--content-width);
+  margin-bottom: 3rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 70vh;
+  }
+
+  .subheadline {
+    font-size: 1.125rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .cta-buttons .button {
+    text-align: center;
+  }
+}
