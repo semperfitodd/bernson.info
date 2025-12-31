@@ -12,4 +12,3 @@ export const SOCIAL_LINKS = [
     { href: 'mailto:todd@bernsonfamily.com', icon: faEnvelope, label: 'Email' },
     { href: 'https://calendly.com/todd-bernson', icon: faCalendarAlt, label: 'Schedule a meeting' }
 ];
-

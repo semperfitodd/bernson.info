@@ -28,6 +28,26 @@ variable "environment" {
   }
 }
 
+variable "josephine_name" {
+  description = "Subdomain/site identifier (e.g., 'josephine' for josephine.domain.com)"
+  type        = string
+
+  validation {
+    condition     = can(regex("^[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$", var.josephine_name))
+    error_message = "The name must be a valid subdomain (lowercase alphanumeric and hyphens only, 3-63 characters)."
+  }
+}
+
+variable "josephine_site_directory" {
+  description = "Local path to the built site files"
+  type        = string
+
+  validation {
+    condition     = length(var.josephine_site_directory) > 0
+    error_message = "The site_directory cannot be empty."
+  }
+}
+
 variable "region" {
   description = "AWS Region where resources will be deployed"
   type        = string

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /static/
+
+Sitemap: https://josephine.bernson.info/sitemap.xml
+
+Crawl-delay: 1
