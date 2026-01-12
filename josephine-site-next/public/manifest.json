@@ -1,0 +1,16 @@
+{
+  "short_name": "Josephine Bernson",
+  "name": "Josephine Bernson - Revenue Leadership & Executive Strategy",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "description": "Recognized executive leader driving sustained growth in competitive industries."
+}
