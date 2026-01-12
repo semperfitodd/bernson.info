@@ -1,16 +1,18 @@
 locals {
   mime_types = {
-    "css"  = "text/css"
-    "html" = "text/html"
-    "ico"  = "image/ico"
-    "jpg"  = "image/jpeg"
-    "js"   = "application/javascript"
-    "json" = "application/json"
-    "map"  = "application/octet-stream"
-    "png"  = "image/png"
-    "svg"  = "image/svg+xml"
-    "txt"  = "text/plain"
-    "xml"  = "application/xml"
+    "css"   = "text/css"
+    "html"  = "text/html"
+    "ico"   = "image/ico"
+    "jpg"   = "image/jpeg"
+    "js"    = "application/javascript"
+    "json"  = "application/json"
+    "map"   = "application/octet-stream"
+    "png"   = "image/png"
+    "svg"   = "image/svg+xml"
+    "txt"   = "text/plain"
+    "woff"  = "font/woff"
+    "woff2" = "font/woff2"
+    "xml"   = "application/xml"
   }
 
   site_domain = "${var.name}.${var.domain}"
@@ -39,8 +41,3 @@ variable "tags" {
   description = "Tags to be applied to resources"
   type        = map(string)
 }
-
-# variable "web_acl_id" {
-#   description = "WAF ARN"
-#   type        = string
-# }

@@ -1,35 +1,30 @@
-# bernson.info
+# Bernson Family Sites
 
-Personal websites for the Bernson family, hosted on AWS with Terraform infrastructure.
+Next.js static sites with SEO optimization.
 
-## Sites
+## Structure
 
-- **todd.bernson.info**: Professional site with LinkedIn article integration
-- **josephine.bernson.info**: Executive leadership portfolio
-
-## Infrastructure
-
-React frontends hosted on S3 and served via CloudFront. Infrastructure managed with Terraform.
-
-## Development
-
-```bash
-cd todd-site  # or josephine-site
-npm install
-npm start
+```
+josephine-site-next/  - Josephine Bernson professional site
+todd-site-next/       - Todd Bernson professional site
+terraform/            - AWS infrastructure
 ```
 
-## Deployment
+## Build
 
 ```bash
-cd terraform
-terraform init
-terraform plan -out=plan.out
-terraform apply plan.out
+cd josephine-site-next && npm install && npm run build
+cd todd-site-next && npm install && npm run build
 ```
 
-## Configuration
+## Deploy
 
-- Terraform variables: `terraform/terraform.tfvars`
-- LinkedIn token: AWS Secrets Manager
-- Token generation: https://www.linkedin.com/developers/tools/oauth/token-generator
+Static output in each site's `out/` directory. Upload to S3 or static hosting.
+
+## Features
+
+- Next.js 14 App Router
+- Static site generation
+- SEO metadata (Open Graph, Twitter Cards)
+- Dynamic sitemaps
+- Mobile responsive
