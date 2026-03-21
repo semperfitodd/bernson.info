@@ -1,0 +1,14 @@
+.quote {
+  font-size: 1.75rem;
+  line-height: 1.6;
+  font-weight: 300;
+  font-style: italic;
+  max-width: 800px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .quote {
+    font-size: 1.375rem;
+  }
+}
