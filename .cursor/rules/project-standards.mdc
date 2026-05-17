@@ -1,0 +1,39 @@
+---
+description: Project-wide coding standards for bernson.info
+alwaysApply: true
+---
+
+# bernson.info Project Standards
+
+## Architecture
+- Static Next.js 14 site (App Router, `output: 'export'`) deployed to S3 + CloudFront
+- Terraform (flat layout, no nested modules) manages all AWS infrastructure
+- GitHub Actions CI/CD: `terraform.yml` for infra, `deploy-site.yml` for site
+- Lambda (Python 3.13) syncs LinkedIn articles daily via EventBridge
+
+## Code Rules
+- DRY: shared values in `constants.js` (frontend) or `locals`/`variables` (Terraform)
+- No hardcoded secrets; secrets only in `.env`, `terraform.tfvars`, or Secrets Manager
+- No unnecessary comments; no commented-out code
+- No unused code, functions, or resources
+- No raw inline styles; all CSS in `globals.css`
+- Uniform formatting: `terraform fmt`, Next.js ESLint
+
+## Terraform
+- Flat file layout: `main.tf`, `variables.tf`, `outputs.tf`, `providers.tf`, `versions.tf`, plus resource-specific files
+- All variables must have `description` and `validation` blocks
+- Use community modules (`terraform-aws-modules/*`) where appropriate
+- IAM policies: least-privilege, no wildcard actions
+- Tag all resources via `var.tags` and provider `default_tags`
+
+## Frontend (Next.js)
+- Animations via Framer Motion (`app/components/motion/` wrappers)
+- Respect `prefers-reduced-motion`
+- CSS custom properties for theming in `:root`
+- Mobile-first responsive design (breakpoints at 900px, 600px)
+
+## Lambda (Python)
+- Use `logger.info("message: %s", var)` style (not f-strings in log calls)
+- Catch specific exceptions (`ClientError`, `requests.HTTPError`)
+- All HTTP requests must include `timeout`
+- Constants at module top level in UPPER_SNAKE_CASE

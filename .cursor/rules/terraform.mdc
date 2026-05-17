@@ -1,0 +1,30 @@
+---
+description: Terraform conventions for AWS infrastructure
+globs: terraform/**/*.tf
+alwaysApply: false
+---
+
+# Terraform Conventions
+
+## File Layout
+- `versions.tf` - required Terraform/provider versions
+- `backend.tf` - remote state config
+- `providers.tf` - provider config with `default_tags`
+- `main.tf` - locals and shared data sources
+- `variables.tf` - all input variables with validation
+- `outputs.tf` - outputs for GitHub Actions integration
+- Resource files named by concern: `s3.tf`, `cloudfront.tf`, `r53.tf`, `lambda.tf`, `dynamo.tf`, `secrets.tf`, `gha.tf`, `budget.tf`
+
+## Naming
+- Resource names use `${var.todd_name}-${local.environment}` prefix
+- Locals for derived values (e.g., `local.site_domain`, `local.environment`)
+- No hardcoded names; use locals or variables
+
+## IAM
+- Enumerate specific actions; never use `service:*`
+- Use `data.aws_iam_policy_document` for policies
+- Scope `resources` to specific ARNs where possible
+
+## Architecture Diagram
+- Maintained in `architecture.drawio` at repo root
+- Export to PNG via: `/opt/homebrew/bin/drawio --export --format png --output architecture.png architecture.drawio`

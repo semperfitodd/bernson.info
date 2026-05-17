@@ -1,0 +1,27 @@
+---
+description: Python Lambda coding conventions
+globs: terraform/lambda/**/*.py
+alwaysApply: false
+---
+
+# Lambda Python Conventions
+
+## Structure
+- Handler: `lambda_handler(event, context)` in `app.py`
+- Constants at module top, UPPER_SNAKE_CASE
+- Private helpers prefixed with `_`
+- Classes for stateful API clients (e.g., `LinkedInPoster`)
+
+## Error Handling
+- Catch `botocore.exceptions.ClientError` for AWS calls
+- Use `requests.raise_for_status()` instead of manual status checks
+- Use `logger.exception()` to include stack traces
+- Return structured `{"statusCode": N, "body": json.dumps({...})}` from handler
+
+## Logging
+- Use `logger.info("message: %s", var)` (lazy formatting, not f-strings)
+- Log at appropriate levels: `info` for flow, `warning` for recoverable, `error`/`exception` for failures
+
+## HTTP
+- All `requests.get/post/put` calls must include `timeout`
+- Extract shared headers (e.g., User-Agent) into module-level constants

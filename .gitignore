@@ -1,0 +1,36 @@
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfplan.*
+plan.out
+*.zip
+**/builds/
+
+# Node
+**/node_modules/
+**/.next/
+**/out/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+*.iml
+*.swp
+*.swo
+*~
+
+# Secrets
+.env
+.env.local
+.env.*.local
+secrets.tfvars
+
+# Python
+__pycache__/
+*.pyc
+
+# Misc
+*.log
