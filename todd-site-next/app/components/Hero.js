@@ -57,11 +57,11 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p className="hero-title" variants={fadeUp}>
-          Technical depth with executive presence
+          Setting the vision for AI and cloud — then making it real
         </motion.p>
 
         <motion.p className="hero-description" variants={fadeUp}>
-          I build <strong>practical AI and cloud systems</strong> that create real business impact, and I love building strong teams around the work.
+          I set the technology and AI vision that drives real business impact, and I build the teams to execute it.
           AWS Ambassador with 30+ certifications. AWS Summit speaker. US Marine veteran.
         </motion.p>
 

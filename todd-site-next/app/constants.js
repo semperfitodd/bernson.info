@@ -48,8 +48,8 @@ export const EXPERTISE_AREAS = [
     items: ['AWS (12 Certifications)', 'Multi-Cloud Strategy', 'Serverless Architecture', 'Kubernetes & EKS', 'Infrastructure as Code', 'Cost Optimization'],
   },
   {
-    category: 'Technical Leadership',
-    items: ['Engineering Team Development', 'Enterprise Architecture', 'DevOps & CI/CD', 'Security & Compliance', 'Fortune 500 Delivery', 'Technical Strategy'],
+    category: 'Strategic Leadership',
+    items: ['Technical Strategy', 'Enterprise Architecture', 'Engineering Team Development', 'Fortune 500 Delivery', 'DevOps & CI/CD', 'Security & Compliance'],
   },
 ]
 
@@ -70,19 +70,19 @@ export const SPEAKING_TALKS = [
 export const OPEN_SOURCE_PROJECTS = [
   {
     name: 'agentic_ai',
-    description: 'Production-grade, application-first agentic AI system for sprint intelligence with deterministic workflows, AI analysis, and web/mobile delivery.',
+    description: 'Reference architecture for agentic AI that turns sprint data into actionable intelligence—deterministic workflows, analysis pipelines, and delivery patterns teams can adapt.',
     topics: ['Agentic AI', 'AWS', 'Step Functions', 'React', 'SwiftUI'],
     url: `${URLS.github}/agentic_ai`,
   },
   {
     name: 'dreamcanvas',
-    description: 'Self-hosted image generation pipeline using Stable Diffusion on AWS. Containerized with Docker, deployed via Terraform.',
+    description: 'Demonstrates how to operationalize generative image workloads on AWS—repeatable patterns for secure, cost-aware creative AI without vendor lock-in.',
     topics: ['Docker', 'AWS', 'Stable Diffusion', 'Terraform'],
     url: `${URLS.github}/dreamcanvas`,
   },
   {
     name: 'voice_clone',
-    description: 'Real-time, self-hosted voice synthesis platform built with Tortoise TTS, Flask, Kubernetes, ArgoCD, and Terraform on AWS.',
+    description: 'Shows how to deliver real-time voice AI with clear operational boundaries—deployment and governance patterns applicable to regulated or customer-facing programs.',
     topics: ['Voice AI', 'Kubernetes', 'Terraform', 'Flask', 'AWS'],
     url: `${URLS.github}/voice_clone`,
   },

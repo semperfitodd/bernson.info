@@ -12,7 +12,7 @@ export default function Speaking() {
         <p className="section-label">Speaking</p>
         <h2 className="section-title" id="speaking-heading">AWS Summits</h2>
         <p className="section-body">
-          I speak at AWS Summits about AI, infrastructure modernization, and MLOps, usually through the lens of lessons learned building real systems.
+          I speak at AWS Summits about AI, infrastructure modernization, and MLOps, sharing how strategic technology decisions drive real business outcomes.
         </p>
       </FadeIn>
       <StaggerContainer stagger={0.08}>

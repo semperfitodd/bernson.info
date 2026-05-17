@@ -16,7 +16,7 @@ export default function Contact() {
               Let&apos;s connect.
             </h2>
             <p className="section-body">
-              If you want to talk AI, cloud, open source, speaking, or just swap ideas, I&apos;d love to hear from you.
+              If you want to discuss AI strategy, cloud transformation, leadership, open source, or speaking, I&apos;d love to hear from you.
             </p>
           </div>
         </FadeIn>

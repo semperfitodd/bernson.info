@@ -25,7 +25,7 @@ export const metadata = {
     default: 'Todd Bernson | Chief AI & Technical Officer | AWS Ambassador',
     template: '%s | Todd Bernson',
   },
-  description: 'Todd Bernson is Chief AI & Technical Officer at BSC Analytics and a three-time AWS Ambassador Award winner. He architects and delivers production AI and cloud systems for Fortune 500 enterprises — 30+ certifications across AWS, Azure, and GCP.',
+  description: 'Todd Bernson is Chief AI & Technical Officer at BSC Analytics and a three-time AWS Ambassador Award winner. He sets the AI and technology vision for Fortune 500 enterprises and leads the teams that deliver — 30+ certifications across AWS, Azure, and GCP.',
   keywords: [
     'Todd Bernson',
     'Chief AI Officer',
@@ -51,13 +51,13 @@ export const metadata = {
     url: BASE_URL,
     siteName: 'Todd Bernson',
     title: 'Todd Bernson | Chief AI & Technical Officer | AWS Ambassador',
-    description: 'Chief AI & Technical Officer at BSC Analytics. Three-time AWS Ambassador Award winner. Delivering production AI and cloud systems for Fortune 500 enterprises.',
+    description: 'Chief AI & Technical Officer at BSC Analytics. Three-time AWS Ambassador Award winner. Sets the AI and technology vision for Fortune 500 enterprises and leads the teams that deliver.',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Todd Bernson' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Todd Bernson | Chief AI & Technical Officer | AWS Ambassador',
-    description: 'Chief AI & Technical Officer at BSC Analytics. Three-time AWS Ambassador Award winner.',
+    description: 'Chief AI & Technical Officer at BSC Analytics. Three-time AWS Ambassador Award winner. Sets AI and technology vision; leads teams that deliver.',
     images: ['/og-image.jpg'],
     creator: '@berntrx',
   },
@@ -94,6 +94,7 @@ const jsonLd = {
     'https://x.com/berntrx',
   ],
   knowsAbout: [
+    'Technology Strategy', 'AI Strategy', 'Team Leadership',
     'Cloud Architecture', 'Artificial Intelligence', 'Machine Learning', 'AWS',
     'Terraform', 'Kubernetes', 'DevOps', 'Technical Leadership',
   ],

@@ -13,7 +13,7 @@ export default function OpenSource() {
         <p className="section-label">Open Source</p>
         <h2 className="section-title" id="opensource-heading">Selected Projects</h2>
         <p className="section-body">
-          GitHub is where I share experiments, working systems, and ideas in public across agentic AI, cloud infrastructure, MLOps, and full-stack applications.
+          These projects reflect my approach to AI and cloud — turning strategic ideas into working reference architectures that teams can learn from and build on.
         </p>
       </FadeIn>
       <StaggerContainer stagger={0.12} className="opensource-grid">
